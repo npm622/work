@@ -1,0 +1,82 @@
+// headers
+
+html {
+  background-color: @background;
+  color: @text;
+}
+
+h1 {
+  letter-spacing: 0.175em;
+  color: @brand-green;
+}
+
+h2 {
+  letter-spacing: 0.15em;
+  color: @brand-blue
+}
+
+h3 {
+  letter-spacing: 0.125em;
+  color: @text
+}
+
+h4 {
+  letter-spacing: 0.1em;
+  color: @text
+}
+
+// links
+
+a {
+  background-color: transparent;
+  color: @brand-blue;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// code blocks
+
+pre {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  width: 100%;
+  &.small {
+    max-width: 250px;
+  }
+  &.medium {
+    max-width: 500px;
+  }
+}
+
+code {
+  align-self: center;
+}
+
+pre > code {
+  .monospace();
+  font-size: 12px;
+  border-left: 3px solid #BCCED4;
+  background: #EDF4F7;
+  border-radius: 0px;
+  padding: 10px;
+  width: 100%;
+  &.hljs {
+    font-size: 12px;
+    border-left: 3px solid #BCCED4;
+    background: #EDF4F7;
+    border-radius: 0px;
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+
+// mixins
+
+.monospace() {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

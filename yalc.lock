@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "mmdb-client-factory": {
+      "signature": "2ada717737548d39c5501aa4ed8c066c",
+      "file": true
+    }
+  }
+}

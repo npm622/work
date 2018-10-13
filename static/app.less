@@ -1,0 +1,18 @@
+@app-bar-height: 5vh;
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &-dashboard {
+    display: flex;
+    flex: 1;
+  }
+
+  &-content {
+    flex: 1;
+    background: -webkit-linear-gradient(to bottom right, lighten(@background, 5%), @background 61.8%);
+    background: linear-gradient(to bottom right, lighten(@background, 5%), @background 61.8%);
+  }
+}
