@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppState } from '../../../state';
-import { UserMenu } from '.';
+import { UserMenu } from '..';
 
 interface StateProps {
   location: string;
@@ -24,7 +24,7 @@ class Header extends Component<Props> {
     const { gotoLogin, gotoWelcome } = this.props;
     return (
       <div className="app-header">
-        <img src="static/logo.png" alt="mmdb" onClick={gotoWelcome} />
+        <img src="static/logo.png" alt="makes.life" onClick={gotoWelcome} />
         <UserMenu gotoLogin={gotoLogin} />
       </div>
     );

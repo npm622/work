@@ -16,7 +16,17 @@ class Footer extends React.Component<Props, State> {
   }
 
   render() {
-    return <div className="app-footer">hand rolled by mmdb.</div>;
+    return (
+      <div className="app-footer">
+        <p>makes'd in twenty eighteen.</p>
+        <p>
+          powered with&nbsp;
+          <a href="https://docs.mongodb.com/stitch/" target="_blank" rel="noopener noreferrer">
+            mongodb stitch.
+          </a>
+        </p>
+      </div>
+    );
   }
 }
 

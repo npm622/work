@@ -1,1 +1,1 @@
-# makes.life/work
+# makes.life

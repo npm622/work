@@ -2,18 +2,17 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-
+import { Stitch } from 'mongodb-stitch-browser-sdk';
 import { ClientFactory } from 'mmdb-client-factory';
 import { Harness, Icons, Router } from './app';
 
 require('../static/favicon.ico');
 require('../static/main.less');
 
-// TODO: extract url and credentials to env vars
 ClientFactory.buildHttp().then(client => {
-  new Icons().doInit();
-  
-  const app = new Harness(client, process.env);
+  new Icons().initialize();
+
+  const app = new Harness(client, Stitch.initializeDefaultAppClient('makes-app-hfbvm'));
 
   const renderApp = (Component: typeof Router) =>
     render(
@@ -27,9 +26,9 @@ ClientFactory.buildHttp().then(client => {
 
   renderApp(Router);
 
-  if ((module as any).hot) {
-    (module as any).hot.accept('./app/router', () => {
-      const appRouter = require('./app/router');
+  if (module.hot) {
+    module.hot.accept('./app/Router', () => {
+      const appRouter = require('./app/Router');
       renderApp(appRouter);
     });
   }

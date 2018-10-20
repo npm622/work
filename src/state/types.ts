@@ -1,13 +1,22 @@
 import { HttpClient } from 'mmdb-client-factory';
 import { RouterState } from 'connected-react-router';
+import { StitchAppClient } from 'mongodb-stitch-browser-sdk';
+import { initialSessionState, SessionState } from '.';
 
 export interface AsyncContext {
-  apgClient: HttpClient;
-  env: string;
+  http: HttpClient;
+  stitch: StitchAppClient;
 }
-
-export const initialAppState: AppState = {};
 
 export interface AppState {
-  router?: RouterState;
+  session: SessionState;
+  router: RouterState;
 }
+
+export const initialAppState: AppState = {
+  session: initialSessionState,
+  router: {
+    location: { pathname: '', search: '', state: {}, hash: '' },
+    action: 'PUSH',
+  },
+};
