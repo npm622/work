@@ -2,11 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-
 const libName = 'mtbw-web';
 
-
 module.exports = (env = {}) => ({
+  mode: 'development',
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://0.0.0.0:6220',
@@ -72,7 +71,7 @@ module.exports = (env = {}) => ({
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'null'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/static/'
   },
   devtool: 'inline-source-map',

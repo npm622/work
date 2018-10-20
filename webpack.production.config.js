@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const libName = 'work';
 
 module.exports = (env = {}) => ({
+  mode: 'production',
   entry: ['./src/index.tsx'],
   plugins: [
     new webpack.DefinePlugin({

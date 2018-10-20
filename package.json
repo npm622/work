@@ -13,8 +13,8 @@
   },
   "scripts": {
     "compile": "tsc",
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production --env.build",
+    "start": "webpack-dev-server",
+    "build": "webpack  --config webpack.production.config.js --env.build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -55,7 +55,7 @@
     "@types/react-router-redux": "^5.0.15",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^2.0.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "prettier": "^1.14.3",

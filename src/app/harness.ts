@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import { createBrowserHistory, createMemoryHistory, History } from 'history';
 import { applyMiddleware, createStore, compose, Middleware, Store } from 'redux';
-import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { HttpClient } from 'mmdb-client-factory';
 import { AppState, reducers, initialAppState } from '../state';
 
@@ -12,12 +12,10 @@ export default class Harness {
   private middlewares: Middleware[];
   public store: Store<AppState>;
 
-  constructor( public client: HttpClient, public env: ProcessEnv ) {
-    this.history = typeof window !== 'undefined' ? createBrowserHistory() : createMemoryHistory();
-    this.middlewares = [
-      routerMiddleware(this.history),
-      thunk.withExtraArgument({ http: {}, env })
-    ];
+  constructor(public client: HttpClient, public env: ProcessEnv) {
+    this.history =
+      typeof window !== 'undefined' ? createBrowserHistory({ basename: env.PUBLIC_URL }) : createMemoryHistory();
+    this.middlewares = [routerMiddleware(this.history), thunk.withExtraArgument({ http: {}, env })];
 
     let composeEnhancers: <R>(a: R) => R;
     if (this.env.NODE_ENV !== ENV_PROD) {
