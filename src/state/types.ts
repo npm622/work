@@ -1,22 +1,17 @@
-import { HttpClient } from 'mmdb-client-factory';
 import { RouterState } from 'connected-react-router';
 import { StitchAppClient } from 'mongodb-stitch-browser-sdk';
-import { initialSessionState, SessionState } from '.';
+import { AdminState } from '.';
 
 export interface AsyncContext {
-  http: HttpClient;
   stitch: StitchAppClient;
 }
 
-export interface AppState {
-  session: SessionState;
-  router: RouterState;
-}
-
-export const initialAppState: AppState = {
-  session: initialSessionState,
+export const AppState = () => ({
+  admin: AdminState(),
   router: {
     location: { pathname: '', search: '', state: {}, hash: '' },
     action: 'PUSH',
-  },
-};
+  } as RouterState,
+});
+
+export interface AppState extends ReturnType<typeof AppState> {}

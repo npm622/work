@@ -1,10 +1,155 @@
+@app-footer-spacing: 20px;
+@app-toolbar-height: 50px;
+
 .app {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 
-  &-main {
+  &-header {
+    .app-toolbar();
+
+    &-user-menu {
+      position: relative;
+      flex-basis: 4vw;
+
+      &:hover {
+        color: @green;
+      }
+
+      &-icon {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      &-list {
+        position: absolute;
+        top: @app-toolbar-height;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  &-view {
     display: flex;
     flex: 1;
   }
+
+  &-sidebar {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: lighten(@background, 5%);
+
+    &-item {
+      margin-bottom: 10px;
+      padding: 1rem;
+      background-color: lighten(@background, 5%);
+      color: darken(@text, 7.5%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-icon {
+        margin-right: 0.5rem;
+      }
+
+      &:hover {
+        background-color: lighten(lighten(@background, 5%), 7.5%);
+        color: @text;
+      }
+
+      &-is-active {
+        background-color: lighten(@background, 5%);
+        color: @success;
+
+        &:hover {
+          background-color: lighten(@background, 5%);
+          color: @success;
+        }
+      }
+    }
+  }
+
+  &-content {
+    padding: 1em;
+    flex: 1;
+    overflow: auto;
+    background: -webkit-linear-gradient(to bottom right, lighten(@background, 5%), @background 61.8%);
+    background: linear-gradient(to bottom right, lighten(@background, 5%), @background 61.8%);
+  }
+
+  &-footer {
+    .app-toolbar();
+
+    -webkit-transition: background-color 1s ease;
+    -moz-transition: background-color 1s ease;
+    -o-transition: background-color 1s ease;
+    transition: background-color 1s ease;
+
+    &-success {
+      .app-footer-fade(@green);
+    }
+
+    &-warn {
+      .app-footer-fade(@warning);
+    }
+
+    &-error {
+      .app-footer-fade(@danger);
+    }
+
+    &-info {
+      .app-footer-fade(@info);
+    }
+
+    &-debug {
+      .app-footer-fade(@gray4);
+    }
+
+    &-display {
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        margin-right: @app-footer-spacing;
+      }
+
+      &-alert {
+        display: flex;
+        align-items: center;
+
+        &-timestamp {
+          margin-right: @app-footer-spacing;
+        }
+
+        &-dismiss {
+          margin-left: @app-footer-spacing;
+          padding: 10px 20px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+.app-toolbar() {
+  padding: 0 10px;
+  flex: 0 @app-toolbar-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.app-footer-fade(@color) {
+  background-color: fade(@color, 20%);
+  color: darken(@color, 5%);
 }

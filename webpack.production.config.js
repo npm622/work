@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const libName = 'work';
 
@@ -9,23 +9,17 @@ module.exports = (env = {}) => ({
   entry: ['./src/index.tsx'],
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(''),
-        REPO_GIT_REV: JSON.stringify(process.env.REPO_GIT_REV),
-        DB_VERSION: JSON.stringify(process.env.DB_VERSION),
-        JS_SDK_VERSION: JSON.stringify(process.env.JS_SDK_VERSION),
-        UI_VERSION: JSON.stringify(process.env.npm_package_version)
-      }
-    })
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: { output: { comments: false } }
-      })
-    ]
-  },
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       uglifyOptions: { output: { comments: false } }
+  //     })
+  //   ]
+  // },
   module: {
     rules: [
       {

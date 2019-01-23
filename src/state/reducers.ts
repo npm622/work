@@ -2,10 +2,10 @@ import { combineReducers, Reducer } from 'redux';
 import { History } from 'history';
 import { connectRouter } from 'connected-react-router';
 import { AppState } from '.';
-import sessionReducer from './session/reducer';
+import adminReducer from './admin/reducer';
 
 const buildRootReducers: (h: History) => Reducer<AppState> = history => combineReducers({
-  session: sessionReducer,
+  admin: adminReducer,
   router: connectRouter(history)
 });
 
