@@ -10,7 +10,7 @@ interface Props {
 
 const FooterDisplay = ({ loading, alert, ackAlert }: Props) => (
   <div className="app-footer-display">
-    <FontAwesomeIcon className="app-footer-display-icon" icon={appFooterIcon(alert)} spin={loading} />
+    <FontAwesomeIcon className="app-footer-display-icon" icon={appFooterIcon(alert)} size="2x" spin={loading} />
     {!loading && !alert && <p>makes'd on January 2, 2019</p>}
     {!loading && alert && (
       <div className="app-footer-display-alert">

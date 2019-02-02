@@ -4,7 +4,7 @@ import { StitchUser } from 'mongodb-stitch-browser-sdk';
 import { urls } from '../../utils';
 import {
   AuthRoute,
-  About,
+  // About,
   ConfirmationEmail,
   ConfirmEmail,
   Contact,
@@ -27,6 +27,8 @@ interface Props {
   user?: StitchUser;
 }
 
+// const APP_ROUTES = [urls.home(), urls.about(), urls.contact()];
+
 const View = ({ activePath, gotoAbout, gotoContact, gotoHome, user }: Props) => {
   return (
     <div className="app-view">
@@ -43,7 +45,6 @@ const View = ({ activePath, gotoAbout, gotoContact, gotoHome, user }: Props) => 
           <Route path={urls.waitingRoom().route()} render={props => <WaitingRoom email={props.match.params.email} />} />
           <AuthRoute user={user} path={urls.home()} component={Home} />
           <AuthRoute user={user} path={urls.contact()} component={Contact} />
-          <AuthRoute user={user} path={urls.about()} component={About} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -1,6 +1,6 @@
 import { RouterState } from 'connected-react-router';
 import { StitchAppClient } from 'mongodb-stitch-browser-sdk';
-import { AdminState } from '.';
+import { AdminState, DbState } from '.';
 
 export interface AsyncContext {
   stitch: StitchAppClient;
@@ -8,6 +8,7 @@ export interface AsyncContext {
 
 export const AppState = () => ({
   admin: AdminState(),
+  db: DbState(),
   router: {
     location: { pathname: '', search: '', state: {}, hash: '' },
     action: 'PUSH',

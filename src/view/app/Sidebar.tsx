@@ -8,11 +8,10 @@ interface Props {
   gotoHome: () => void;
 }
 
-const Sidebar = ({ activePath, gotoAbout, gotoContact, gotoHome }: Props) => {
+const Sidebar = ({ activePath, /*gotoAbout, */gotoContact, gotoHome }: Props) => {
   return (
     <div className="app-sidebar">
       <SidebarItem active={activePath} target="home" icon="home" text="Home" handleClick={gotoHome} />
-      <SidebarItem active={activePath} target="about" icon="info" text="About" handleClick={gotoAbout} />
       <SidebarItem active={activePath} target="contact" icon="beer" text="Contact" handleClick={gotoContact} />
     </div>
   );

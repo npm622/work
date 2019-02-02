@@ -48,6 +48,8 @@ class Form<T> extends React.Component<Props<T>, State<T>> {
     submitting: this.state.submitting,
     handleInputBlur: this.handleInputBlur,
     handleInputChange: this.handleInputChange,
+    handleTextAreaBlur: this.handleTextAreaBlur,
+    handleTextAreaChange: this.handleTextAreaChange,
   });
 
   ['submitApi'] = () => ({
@@ -69,6 +71,26 @@ class Form<T> extends React.Component<Props<T>, State<T>> {
 
   ['handleInputChange'] = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = parseInput<T>(e);
+    this.setFormState(
+      { [name]: value } as Partial<T>,
+      { [name]: true } as StateFormDirty<T>,
+      { [name]: '' } as StateFormErrors<T>
+    );
+  };
+
+  ['handleTextAreaBlur'] = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = parseTextArea<T>(e);
+
+    const { onValidate = () => Promise.resolve() } = this.props;
+    const { form } = this.state;
+
+    onValidate(name, value, form.data).catch(err =>
+      this.setFormState({}, {} as StateFormDirty<T>, { [name]: err.message } as StateFormErrors<T>)
+    );
+  };
+
+  ['handleTextAreaChange'] = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = parseTextArea<T>(e);
     this.setFormState(
       { [name]: value } as Partial<T>,
       { [name]: true } as StateFormDirty<T>,
@@ -135,6 +157,15 @@ const parseInput = <T extends {}>(e: React.ChangeEvent<HTMLInputElement>): { nam
 
   const name = target.name as keyof T;
   const value = target.type === 'checkbox' ? target.checked : target.value;
+
+  return { name, value };
+};
+
+const parseTextArea = <T extends {}>(e: React.ChangeEvent<HTMLTextAreaElement>): { name: keyof T; value: any } => {
+  const { target } = e;
+
+  const name = target.name as keyof T;
+  const value = target.value;
 
   return { name, value };
 };

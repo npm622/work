@@ -9,6 +9,7 @@ import FormLabelTitle from './FormLabelTitle';
 import FormRadioInput from './FormRadioInput';
 import FormRow from './FormRow';
 import FormSubmit from './FormSubmit';
+import FormTextArea from './FormTextArea';
 import FormTextInput from './FormTextInput';
 
 export {
@@ -23,5 +24,6 @@ export {
   FormRadioInput,
   FormRow,
   FormSubmit,
+  FormTextArea,
   FormTextInput,
 };

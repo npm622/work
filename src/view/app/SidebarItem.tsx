@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface Props {
   active: string;
   handleClick: () => void;
-  icon: 'beer' | 'home' | 'info';
+  icon: 'beer' | 'home' | 'info-circle';
   target: string;
   text: string;
 }
@@ -16,7 +16,7 @@ const SidebarItem = ({ active, handleClick, icon, target, text }: Props) => {
       className={classNames('app-sidebar-item', { 'app-sidebar-item-is-active': active === target })}
       onClick={handleClick}
     >
-      <FontAwesomeIcon className="app-sidebar-item-icon" icon={icon} />
+      <FontAwesomeIcon className="app-sidebar-item-icon" icon={icon} size="2x" />
       &nbsp;{text}
     </button>
   );
