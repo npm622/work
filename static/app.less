@@ -11,7 +11,7 @@
     .app-toolbar();
 
     &-user-menu {
-      position: relative;
+      height: 100%;
       flex-basis: 4vw;
 
       &:hover {
@@ -22,14 +22,6 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-      }
-
-      &-list {
-        position: absolute;
-        top: @app-toolbar-height;
-        right: 0;
-        display: flex;
-        flex-direction: column;
       }
     }
   }

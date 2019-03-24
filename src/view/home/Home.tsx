@@ -1,8 +1,13 @@
 import React from 'react';
 
 class Home extends React.Component {
+  ['a'] = () => true;
+
   render() {
-    return <h1>home page</h1>
+    if (this.a()) {
+      throw new Error('oh noz!');
+    }
+    return null;
   }
 }
 

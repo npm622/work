@@ -30,7 +30,9 @@ class Footer extends React.Component<Props> {
     const alert = nextAlert(alerts);
     return (
       <div className={appFooterClassNames(alert)}>
-        <FooterDisplay loading={loading} alert={alert} ackAlert={ackAlert} />
+        <FooterDisplay loading={loading} alert={alert} ackAlert={() => {
+          console.log(ackAlert());
+        }} />
         {!alert && (
           <p>
             powered by{' '}

@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
+import { Form, FormGroup, FormRow, FormLabel, FormInput, FormSubmit, FormTextInput } from 'makes-apps';
 import { emailValidator, passwordValidator, urls } from '../../utils';
 import { EmailPassword, login } from '../../state';
-import { Form, FormGroup, FormRow, FormLabel, FormInput, FormSubmit, FormTextInput, Links, LinkItem } from '..';
+import { Links, LinkItem } from '..';
 
 interface DispatchProps {
   gotoHome: () => void;

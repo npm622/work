@@ -1,34 +1,40 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux';
-import { Stitch } from 'mongodb-stitch-browser-sdk';
-import Bootstrap from './bootstrap';
-import Icons from './icons';
+import { StitchAuth } from 'mongodb-stitch-browser-sdk';
+import { appRenderer, AppStager } from 'makes-apps';
+import buildRootReducers, { appIcons, AppState, AsyncContext, setUser } from './state';
 import Router from './router';
+
+// load assets
 
 require('../static/favicon.ico');
 require('../static/main.less');
 
-new Icons().initialize();
+// build app infrastructure
 
-const app = new Bootstrap(Stitch.initializeDefaultAppClient('makes-app-hfbvm'));
+const asyncContext = AsyncContext('makes-app-hfbvm');
+const { clients: stitch } = asyncContext;
 
-const renderApp = (Component: typeof Router) =>
-  render(
-    <Provider store={app.store}>
-      <AppContainer>
-        <Component history={app.history} />
-      </AppContainer>
-    </Provider>,
-    document.getElementById('root')
-  );
+const { history, store } = new AppStager(AppState(), asyncContext)
+  .withIcons(...appIcons)
+  .withHistory()
+  .withReducers(history => buildRootReducers(history!))
+  .setup();
+
+// handle auth
+
+const dispatchSetUser = ({ user }: StitchAuth) => store!.dispatch(setUser(user));
+
+dispatchSetUser(stitch.auth());
+stitch.registerAuthListener(dispatchSetUser);
+
+// handle rendering
+
+const renderApp = appRenderer('root', history!, store!);
 
 renderApp(Router);
 
 if (module.hot) {
   module.hot.accept('./router', () => {
-    const appRouter = require('./router');
-    renderApp(appRouter);
+    const router = require('./router');
+    renderApp(router);
   });
 }

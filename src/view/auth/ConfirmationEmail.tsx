@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
+import { Form, FormGroup, FormRow, FormLabel, FormInput, FormSubmit, FormTextInput } from 'makes-apps';
 import { emailValidator, urls } from '../../utils';
 import { resendConfirmationEmail } from '../../state';
-import { Form, FormGroup, FormRow, FormLabel, FormInput, FormSubmit, FormTextInput } from '..';
 
 interface DispatchProps {
   gotoWaitingRoom: () => void;

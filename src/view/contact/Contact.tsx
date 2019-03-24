@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormLabel, FormInput, FormRow, FormSubmit, FormTextArea, FormTextInput } from '..';
+import { Form, FormLabel, FormInput, FormRow, FormSubmit, FormTextArea, FormTextInput } from 'makes-apps';
 
 class Contact extends React.Component {
   render() {

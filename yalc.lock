@@ -4,6 +4,14 @@
     "mmdb-client-factory": {
       "signature": "2ada717737548d39c5501aa4ed8c066c",
       "file": true
+    },
+    "makes-apps": {
+      "signature": "61ca5d752e84c5951f2a8f0f2c2d71b0",
+      "file": true
+    },
+    "makes-clients": {
+      "signature": "80a110acd033b64883c73c8b2382fb8c",
+      "file": true
     }
   }
 }

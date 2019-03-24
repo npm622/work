@@ -1,0 +1,25 @@
+.dropdown {
+  height: 100%;
+  position: relative;
+
+  &-toggle {
+    height: 100%;
+  }
+
+  &-menu {
+    position: absolute;
+    display: flex;
+
+    &-align-right {
+      right: 0;
+    }
+
+    &-vertical {
+      flex-direction: column;
+    }
+
+    &-item {
+      min-width: 160px;
+    }
+  }
+}

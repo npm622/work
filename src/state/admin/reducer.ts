@@ -1,5 +1,6 @@
 import { buildReducer, newActionHandler } from '../../utils';
-import { AdminState, ackAlert, addAlert, setUser } from '.';
+import { ackAlert, addAlert, setUser } from './actions';
+import { AdminState } from './types';
 
 export default buildReducer(AdminState(), [
   newActionHandler(setUser, (state, user) => {

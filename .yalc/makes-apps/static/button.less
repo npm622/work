@@ -1,0 +1,41 @@
+a, button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn {
+  .btn(@white, @gray2, transparent, @gray2, @white, @gray2);
+}
+
+.btn(@color, @background, @border, @inverseColor, @inverseBackground, @inverseBorder) {
+  display: inline-block;
+  padding: 0.5em 1em;
+  outline: none;
+  border: solid 2px @border;
+  .border-radius(4px);
+  background-color: @background;
+  color: @color;
+  text-align: center;
+  text-decoration: none;
+
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
+
+  &:hover,
+  &:focus {
+    color: @inverseColor;
+    border-color: @inverseColor;
+    background-color: @inverseBackground;
+  }
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+}

@@ -9,7 +9,7 @@ const createAsync = asyncFactory<AppState, AsyncContext>(create);
 
 export const addContact = createAsync<Contact, RemoteInsertOneResult>(
   'add contact',
-  (contact, dispatch, _getState, { stitch }) =>
+  (contact, dispatch, _getState, { clients: { stitch } }) =>
     asyncActionExecutor(dispatch, () =>
       appDb(stitch)
         .collection<Contact>('contacts')

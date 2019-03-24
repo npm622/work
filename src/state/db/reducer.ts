@@ -1,5 +1,6 @@
 import { buildReducer, newAsyncActionHandler } from '../../utils';
-import { DbState, addContact } from '.';
+import { addContact } from './actions';
+import { DbState } from './types';
 
 export default buildReducer(DbState(), [
   newAsyncActionHandler(addContact.async, {

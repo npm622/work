@@ -29,10 +29,21 @@ interface Props {
 
 // const APP_ROUTES = [urls.home(), urls.about(), urls.contact()];
 
+const hasSidebar = (activePath: string) => {
+  switch (activePath) {
+    case 'home':
+    case 'contact':
+      return true;
+  }
+  return false;
+};
+
 const View = ({ activePath, gotoAbout, gotoContact, gotoHome, user }: Props) => {
   return (
     <div className="app-view">
-      {user && <Sidebar activePath={activePath} gotoAbout={gotoAbout} gotoContact={gotoContact} gotoHome={gotoHome} />}
+      {hasSidebar(activePath) && (
+        <Sidebar activePath={activePath} gotoAbout={gotoAbout} gotoContact={gotoContact} gotoHome={gotoHome} />
+      )}
       <div className="app-content">
         <Switch>
           <Route exact path={urls.welcome()} component={Welcome} />

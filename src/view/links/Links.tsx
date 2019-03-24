@@ -12,11 +12,21 @@ class Links extends React.Component<Props> {
     return (
       <div className={classNames('links', className)}>
         {React.Children.map(children, child => {
-          if (typeof child === 'string' || typeof child === 'number') {
-            child;
-            return;
+          if (!child) {
+            return null;
           }
-          return React.cloneElement(child, { className: 'links-item' });
+          if (typeof child === 'string' || typeof child === 'number' || typeof child === 'boolean') {
+            return child;
+          }
+          return React.cloneElement(child as React.ReactElement<any>, { className: 'links-item' });
+          // if (child) {
+          //   if (typeof child === 'string' || typeof child === 'number') {
+          //     child;
+          //     return;
+          //   }
+          //   return React.cloneElement(child, { className: 'links-item' });
+          // }
+          // return;
         })}
       </div>
     );

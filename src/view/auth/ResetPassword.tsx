@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
 import queryString from 'query-string';
+import { Form, FormGroup, FormRow, FormLabel, FormInput, FormSubmit, FormTextInput } from 'makes-apps';
 import { passwordValidator, urls } from '../../utils';
 import { AppState, VerifiedTokenData, resetPassword } from '../../state';
-import { Form, FormGroup, FormRow, FormLabel, FormInput, FormSubmit, FormTextInput } from '..';
 
 interface StateProps {
   search: string;
