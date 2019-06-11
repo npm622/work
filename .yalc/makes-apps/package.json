@@ -1,0 +1,43 @@
+{
+  "name": "makes-apps",
+  "version": "0.0.0-0807fe5b",
+  "description": "an app factory",
+  "author": "nick makes",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "clean": "shx rm -rf dist lib lib-esm",
+    "prebuild": "yarn run clean",
+    "build": "tsc && tsc -t es6 --outDir lib-esm && webpack",
+    "predeploy": "yarn run build",
+    "deploy": "yalc push",
+    "test": "yarn run tests && yarn run its",
+    "tests": "jest test\\\\.",
+    "its": "jest __tests__",
+    "lint": "eslint src/",
+    "tslint": "tslint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.17",
+    "@fortawesome/react-fontawesome": "0.1.4",
+    "balloon-css": "^0.5.0",
+    "classnames": "2.2.6",
+    "connected-react-router": "6.3.2",
+    "es6-promise": "4.2.6",
+    "fetch-everywhere": "1.0.5",
+    "history": "4.9.0",
+    "mongodb-stitch-browser-sdk": "4.3.2",
+    "query-string": "6.4.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-loadable": "^5.5.0",
+    "react-redux": "6.0.1",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
+    "redux": "4.0.1",
+    "redux-logger": "3.0.6",
+    "redux-thunk": "2.3.0",
+    "yup": "0.27.0"
+  }
+}

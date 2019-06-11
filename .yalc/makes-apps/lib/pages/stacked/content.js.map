@@ -1,0 +1,1 @@
+{"version":3,"file":"content.js","sourceRoot":"","sources":["../../../src/pages/stacked/content.tsx"],"names":[],"mappings":";;;AAAA,wDAA0B;AAQ1B,IAAM,kBAAkB,GAAG,UAAC,EAA2C;QAAzC,sBAAQ,EAAE,0BAAsB;IAC5D,IAAM,OAAO,GAAG,aAAa,CAAC,GAAG,CAAC,SAAS,CAAC,CAAC;IAC7C,OAAO,uCAAK,SAAS,EAAE,OAAO,CAAC,IAAI,EAAE,IAAG,QAAQ,CAAO,CAAC;AAC1D,CAAC,CAAC;AAEF,kBAAe,kBAAkB,CAAC"}

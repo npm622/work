@@ -1,8 +1,12 @@
 {
   "version": "v1",
   "packages": {
-    "mmdb-client-factory": {
-      "signature": "2ada717737548d39c5501aa4ed8c066c",
+    "makes-apps": {
+      "signature": "0807fe5b138c84a58cd24a8c9b718a5c",
+      "file": true
+    },
+    "makes-clients": {
+      "signature": "dba2b42e27c32568b6c1d957b45d2105",
       "file": true
     }
   }

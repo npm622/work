@@ -1,0 +1,33 @@
+.border-radius(@size) {
+  border-radius: @size;
+  -moz-border-radius: @size;
+  -webkit-border-radius: @size;
+}
+
+.shadow(@x, @y, @blur, @spread, @color) {
+  -moz-box-shadow: @x @y @blur @spread @color;
+  -webkit-box-shadow: @x @y @blur @spread @color;
+  box-shadow: @x @y @blur @spread @color;
+}
+
+.overflow() {
+  overflow: auto;
+  .no-scrollbar;
+}
+
+.overflow-x() {
+  overflow-x: auto;
+  .no-scrollbar;
+}
+
+.overflow-y() {
+  overflow-y: auto;
+  .no-scrollbar;
+}
+
+.no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}

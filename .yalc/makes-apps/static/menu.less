@@ -1,0 +1,48 @@
+.menu {
+  .menu(3rem, 54px);
+}
+
+.menu(@height, @width) {
+  .menu(@height, @width, @white, @black);
+}
+
+.menu(@height, @width, @color, @background) {
+  flex: 0 0 @width;
+  display: flex;
+
+  &-toggle {
+    .menu-btn(@color, @background);
+  }
+
+  &-contents {
+    position: absolute;
+    margin-top: @height;
+    display: flex;
+    flex-direction: column;
+
+    &-is-right {
+      right: 0;
+    }
+
+    &-item {
+      .menu-btn(@color, @background);
+      padding: 1rem;
+    }
+  }
+
+}
+
+.menu-btn(@color, @background) {
+  utline: none;
+  border-style: none;
+  background-color: @color;
+  color: fade(@background, 61.8%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    color: fade(@background, 84%);
+  }
+}

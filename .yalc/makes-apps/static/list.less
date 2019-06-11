@@ -1,0 +1,19 @@
+.list {
+  .list(#000, #fff);
+}
+
+.list(@color, @background) {
+  padding: 0;
+
+  &-unstyled {
+    list-style: none;
+  }
+
+  &-item {
+    border-top: 1px solid black;
+
+    &:first-child {
+      border: none;
+    }
+  }
+}
