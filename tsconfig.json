@@ -3,8 +3,10 @@
     "outDir": "./dist/",
     "jsx": "react",
     "target": "es5",
-    "module": "commonjs",
-    "sourceMap": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "inlineSourceMap": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -17,7 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "importHelpers": true,
-    "lib": ["dom", "es5", "es2015.promise", "es6"]
+    "lib": ["dom", "es6", "es2017"]
   },
   "exclude": ["node_modules", "**/*.test.ts?", "dist"]
 }

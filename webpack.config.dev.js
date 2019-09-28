@@ -18,9 +18,6 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
     new HtmlWebpackPlugin({
       template: `public/index.html`,
       filename: 'index.html',

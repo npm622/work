@@ -1,7 +1,5 @@
 import { makesAuthReducer } from '@makes-apps/lib';
 
-import { User } from '../users';
+import actions from './actions';
 
-import * as actions from './actions';
-
-export default makesAuthReducer<User>(actions);
+export default makesAuthReducer(actions);

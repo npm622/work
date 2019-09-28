@@ -8,6 +8,11 @@
     "makes-clients": {
       "signature": "dba2b42e27c32568b6c1d957b45d2105",
       "file": true
+    },
+    "@makes-apps/lib": {
+      "signature": "6e1ddc4210adfc3ec1562295fb9fe2e8",
+      "file": true,
+      "replaced": "0.0.43"
     }
   }
 }

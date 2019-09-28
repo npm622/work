@@ -1,4 +1,2 @@
-export { default as StackedLogo } from './stacked_logo';
-export { default as LongLogo } from './long_logo';
-export { default as FileCabinet } from './file_cabinet';
-export { default as Id } from './id';
+export { default as LogoLight } from './logo_light';
+export { default as LogoDark } from './logo_dark';

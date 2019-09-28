@@ -1,22 +1,10 @@
 import { adminActions, makesAuthActions } from '@makes-apps/lib';
 import { UserPasswordCredential } from 'mongodb-stitch-browser-sdk';
 
-import AppContext from '../../app/context';
-import AppState from '../../app/state';
+import { RootContext, RootState } from '../../root';
 
-import { User } from '../users';
-
-const {
-  setUser,
-  login,
-  logout,
-  register,
-  sendConfirmationEmail,
-  sendPasswordResetEmail,
-  confirmEmail,
-  resetPassword,
-} = makesAuthActions<AppState, AppContext, User>(
-  "Gramma's Kitchen",
+export default makesAuthActions<RootState, RootContext>(
+  'Fairfield Football Club',
   {
     addAlert: adminActions.addAlert.creator.action,
     startWork: adminActions.startWork.creator.action,
@@ -34,5 +22,3 @@ const {
       stitch.clients().emailPassword.resetPassword(token, tokenId, password),
   })
 );
-
-export { setUser, login, logout, register, sendConfirmationEmail, sendPasswordResetEmail, confirmEmail, resetPassword };
