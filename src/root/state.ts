@@ -1,11 +1,9 @@
 import { AuthState, LocalAppState, makesAppState } from '@makes-apps/lib';
 
 import OFFLINE from '../offline';
-import { BlogsState, ContactsState, UsersState } from '../types';
+import { BlogsState, ContactsState, User, UsersState } from '../types';
 
 import LOCAL_KEY from './local_key';
-
-const initialState = LocalAppState.read(LOCAL_KEY) || {};
 
 const offlineUser = {
   user: {
@@ -21,8 +19,10 @@ const offlineUser = {
   },
 };
 
+const initialState = LocalAppState.read(LOCAL_KEY) || {};
+
 const AppState = makesAppState({
-  auth: new AuthState(OFFLINE ? offlineUser : initialState.user),
+  auth: new AuthState<User>(OFFLINE ? offlineUser : initialState.user),
   blogs: new BlogsState(),
   contacts: new ContactsState(),
   users: new UsersState(),

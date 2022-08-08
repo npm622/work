@@ -2,13 +2,23 @@ import { adminActions, makesAuthActions } from '@makes-apps/lib';
 import { UserPasswordCredential } from 'mongodb-stitch-browser-sdk';
 
 import { RootContext, RootState } from '../../root';
+import { User } from '../../types/users';
 
-export default makesAuthActions<RootState, RootContext>(
-  'Fairfield Football Club',
+export const {
+  setUser,
+  login,
+  logout,
+  register,
+  sendConfirmationEmail,
+  sendPasswordResetEmail,
+  confirmEmail,
+  resetPassword,
+} = makesAuthActions<RootState, RootContext, User>(
+  'makes.life',
   {
-    addAlert: adminActions.addAlert.creator.action,
-    startWork: adminActions.startWork.creator.action,
-    endWork: adminActions.endWork.creator.action,
+    addAlert: adminActions.addAlert,
+    startWork: adminActions.startWork,
+    endWork: adminActions.endWork,
   },
   stitch => ({
     login: (email: string, password: string) =>

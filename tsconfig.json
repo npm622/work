@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "jsx": "react",
     "target": "es5",
-    "module": "esnext",
-    "moduleResolution": "node",
     "sourceMap": false,
     "inlineSourceMap": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "removeComments": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

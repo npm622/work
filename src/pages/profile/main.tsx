@@ -1,21 +1,20 @@
 import React from 'react';
 import { Database } from '@makes-apps/lib';
 
-import { contactsActions, usersActions, ContactsActions, UsersActions } from '../../store';
+import { RootConnectors } from '../../root';
+import { authActions, contactsActions, usersActions, ContactsActions, UsersActions } from '../../store';
 import { Contact, User } from '../../types';
-
-import connectors from '../../connectors';
 
 import Page from './page';
 
 interface StateProps {
-  userEmail?: string;
+  user?: User;
   contacts: Database<Contact>;
-  users: Database<User>;
 }
 
 interface DispatchProps {
   listContacts: ContactsActions['list'];
+  setUser: (user: User) => void;
   updateUser: UsersActions['update'];
 }
 
@@ -27,9 +26,7 @@ class HomePage extends React.Component<Props> {
   }
 
   render() {
-    const { contacts, updateUser, userEmail, users } = this.props;
-
-    const user = Object.values(users || {}).find(({ email }) => email === userEmail);
+    const { contacts, setUser, updateUser, user } = this.props;
 
     if (!user) {
       return <>loading...</>;
@@ -37,18 +34,29 @@ class HomePage extends React.Component<Props> {
 
     const userContacts = Object.values(contacts || {}).filter(({ from }) => from === user.email);
 
-    return <Page contacts={userContacts} saveUser={updateUser} user={user} />;
+    return (
+      <Page
+        contacts={userContacts}
+        saveUser={user =>
+          updateUser(user).then(res => {
+            setUser(user);
+            return res;
+          })
+        }
+        user={user}
+      />
+    );
   }
 }
 
-export default connectors.withDispatchObject(
-  ({ auth, contacts, users }) => ({
-    userEmail: auth.userEmail,
+export default RootConnectors.withDispatchObject(
+  ({ auth, contacts }) => ({
+    user: auth.user,
     contacts: contacts.db,
-    users: users.db,
   }),
   {
     listContacts: contactsActions.list,
+    setUser: authActions.setUser.creator.action,
     updateUser: usersActions.update,
   }
 )(HomePage);

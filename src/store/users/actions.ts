@@ -1,9 +1,10 @@
 import appActions from '../../actions';
 
-import State, { User } from '../../types/users';
+import { User, UsersState } from '../../types/users';
 
-const factory = appActions.app().forNamespace<State>(State.NAMESPACE);
+const factory = appActions.app().forNamespace<UsersState>(UsersState.NAMESPACE);
 
-export const { list, get, create, createBatch, update, clear, remove } = appActions.crud<State, User>(factory)(dbs =>
-  dbs.auth().users()
+export const { list, get, create, createBatch, update, clear, remove } = appActions.crud<UsersState, User>(factory)(
+  dbs => dbs.auth().users(),
+  'users'
 );

@@ -11,7 +11,7 @@ import {
   FormLabel,
 } from '@makes-apps/lib';
 
-import connectors from '../../connectors';
+import { RootConnectors } from '../../root';
 import { contactsActions, ContactsActions } from '../../store';
 
 interface StateProps {}
@@ -22,7 +22,7 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-class HomePage extends React.Component<Props> {
+class ContactPage extends React.Component<Props> {
   render() {
     const { saveContact } = this.props;
     return (
@@ -63,6 +63,6 @@ class HomePage extends React.Component<Props> {
   }
 }
 
-export default connectors.withDispatchObject(({}) => ({}), {
+export default RootConnectors.withDispatchObject(({}) => ({}), {
   saveContact: contactsActions.create,
-})(HomePage);
+})(ContactPage);

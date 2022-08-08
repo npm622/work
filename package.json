@@ -1,7 +1,7 @@
 {
   "name": "work",
   "version": "0.0.0",
-  "description": "makes.life/work",
+  "description": "what makes life for you",
   "author": "nick makes",
   "license": "MIT",
   "private": true,
@@ -16,16 +16,13 @@
     "lint": "tslint -p ./",
     "test": "jest",
     "start": "webpack-dev-server --env=dev",
-    "build": "webpack  --env=prod",
+    "build": "webpack --env=prod",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
-    "@fortawesome/fontawesome-svg-core": "1.2.14",
-    "@fortawesome/free-solid-svg-icons": "5.7.1",
-    "@fortawesome/react-fontawesome": "0.1.4",
     "@makes-apps/lib": "file:.yalc/@makes-apps/lib",
     "chroma-js": "^2.0.3",
     "classnames": "2.2.6",
@@ -48,11 +45,9 @@
     "react-router-dom": "4.3.1",
     "redux": "4.0.1",
     "redux-logger": "3.0.6",
-    "redux-thunk": "2.3.0",
-    "yup": "0.26.10"
+    "redux-thunk": "2.3.0"
   },
   "devDependencies": {
-    "@types/chroma-js": "^1.4.1",
     "@types/classnames": "2.2.7",
     "@types/core-js": "^2.5.0",
     "@types/enzyme": "3.1.14",
@@ -67,7 +62,6 @@
     "@types/react-router-dom": "4.3.1",
     "@types/redux-logger": "3.0.6",
     "@types/webpack-env": "1.13.7",
-    "@types/yup": "0.26.9",
     "copy-webpack-plugin": "^5.0.2",
     "css-loader": "2.1.0",
     "dotenv": "^8.1.0",

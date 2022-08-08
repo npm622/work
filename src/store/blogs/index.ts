@@ -16,4 +16,4 @@ export const blogsActions = {
   clear: actions.clear.creator.worker,
 };
 
-export { default } from './reducer';
+export { default as blogsReducer } from './reducer';

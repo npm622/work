@@ -1,7 +1,7 @@
 import { makesSliceReducer } from '@makes-apps/lib';
 
-import State from '../../types/blogs';
+import { BlogsState } from '../../types/blogs';
 
 import * as actions from './actions';
 
-export default makesSliceReducer(State.NAMESPACE, new State(), actions);
+export default makesSliceReducer(BlogsState.NAMESPACE, new BlogsState(), actions);

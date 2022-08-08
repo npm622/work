@@ -16,4 +16,4 @@ export const contactsActions = {
   clear: actions.clear.creator.worker,
 };
 
-export { default } from './reducer';
+export { default as contactsReducer } from './reducer';

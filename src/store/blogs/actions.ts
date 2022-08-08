@@ -1,9 +1,10 @@
 import appActions from '../../actions';
 
-import State, { Blog } from '../../types/blogs';
+import { Blog, BlogsState } from '../../types/blogs';
 
-const factory = appActions.app().forNamespace<State>(State.NAMESPACE);
+const factory = appActions.app().forNamespace<BlogsState>(BlogsState.NAMESPACE);
 
-export const { list, get, create, createBatch, update, clear, remove } = appActions.crud<State, Blog>(factory)(dbs =>
-  dbs.app().blogs()
+export const { list, get, create, createBatch, update, clear, remove } = appActions.crud<BlogsState, Blog>(factory)(
+  dbs => dbs.app().blogs(),
+  'blogs'
 );

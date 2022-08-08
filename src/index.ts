@@ -1,39 +1,36 @@
 import 'core-js';
 import 'flatpickr/dist/themes/light.css';
 
-import { debounce, registerAuthListener, AppFactory, LocalAppState } from '@makes-apps/lib';
+import { registerAuthListener, AppFactory, LocalAppState } from '@makes-apps/lib';
 
 import App from './app';
 import OFFLINE from './offline';
 import { rootReducer, RootContext, RootState, LOCAL_KEY } from './root';
 import { authActions, usersActions } from './store';
+import { User } from './types';
 
 const factory = new AppFactory(RootState());
 
 const history = factory.createHistory();
-const store = factory.createStore(rootReducer(history), RootContext(process.env.STITCH_APP_ID || ''));
-
-if (!OFFLINE) {
-  store.subscribe(
-    debounce(() => {
-      const { auth } = store.getState();
-      LocalAppState.write(LOCAL_KEY, { user: auth.user });
-    }, 500)
-  );
-}
+const store = factory.createStore(rootReducer(history), RootContext());
 
 const renderApp = factory.createRenderer(history, store, 'root');
 
 if (!OFFLINE) {
   registerAuthListener(auth => {
-    let userEmail: string | undefined = undefined;
-
     if (auth.user) {
-      userEmail = auth.user.profile.email;
-      store.dispatch<any>(usersActions.list({}));
+      const userEmail = auth.user.profile.email;
+
+      store.dispatch<any>(usersActions.list({})).then(() => {
+        const user = Object.values<User>(store.getState().users.db || {}).find(({ email }) => email === userEmail);
+
+        store.dispatch<any>(authActions.setUser.creator.action(user));
+        LocalAppState.write(LOCAL_KEY, { user });
+      });
+    } else {
+      store.dispatch(authActions.setUser.creator.action(undefined));
+      LocalAppState.write(LOCAL_KEY, {});
     }
-    
-    store.dispatch(authActions.setUser.creator.action(userEmail));
   });
 }
 

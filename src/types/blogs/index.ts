@@ -1,2 +1,2 @@
 export * from './blog';
-export { default } from './state';
+export { default as BlogsState } from './state';

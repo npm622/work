@@ -1,2 +1,2 @@
 export * from './user';
-export { default } from './state';
+export { default as UsersState } from './state';

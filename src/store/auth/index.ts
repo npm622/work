@@ -1,2 +1,4 @@
-export { default as authActions } from './actions';
-export { default } from './reducer';
+import * as authActions from './actions';
+
+export { authActions };
+export { default as authReducer } from './reducer';

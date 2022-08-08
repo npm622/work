@@ -16,4 +16,4 @@ export const usersActions = {
   clear: actions.clear.creator.worker,
 };
 
-export { default } from './reducer';
+export { default as usersReducer } from './reducer';

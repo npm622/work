@@ -1,2 +1,2 @@
 export * from './contact';
-export { default } from './state';
+export { default as ContactsState } from './state';
